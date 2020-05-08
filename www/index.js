@@ -1,4 +1,4 @@
-import { ElGamal } from "rust-apollo";
+import { ElGamal } from "apollo-crypto";
 
 const elgamal = ElGamal.new();
 const cipher = elgamal.encrypt(true);

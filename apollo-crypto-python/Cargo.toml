@@ -6,7 +6,7 @@ edition = "2018"
 
 
 [lib]
-name = "apollo_crypto_python"
+name = "apollo_crypto"
 crate-type = ["cdylib"]
 
 [dependencies.pyo3]

@@ -1,8 +1,11 @@
-import { ElGamal } from "apollo-crypto";
+import { ElGamal, KeyGenerator } from "apollo-crypto";
 
 const elgamal = ElGamal.new();
-const cipher = elgamal.encrypt(true);
-const [c1, c2] = cipher.split(',');
+const keyGenerator = KeyGenerator.new();
+const keys = keyGenerator.generate();
+const [p0, p1] = elgamal.generate_plaintexts().split(',');
+const [c1, c2] = elgamal.encrypt(keys.public_key(), p0).split(',');
 console.log(c1);
 console.log(c2);
-console.log(elgamal.decrypt(c1, c2));
+const decrypted = elgamal.decrypt(keys.secret_key(), c1, c2);
+console.log(decrypted === p0);
